@@ -13,6 +13,7 @@ public class GameManagerScript : MonoBehaviour {
         {
             GameObject newPlayer = Instantiate(player, spawn.transform.GetChild(i).transform.position, spawn.transform.GetChild(i).transform.rotation) as GameObject;
             newPlayer.transform.parent = this.transform;
+            newPlayer.transform.name = "Player " + i;
         }
 	}
 	

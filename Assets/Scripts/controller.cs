@@ -11,6 +11,7 @@ public class controller : MonoBehaviour {
     Rigidbody rb;
     public int playerID;
     Text speedUI;
+    GameObject ch;
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +22,19 @@ public class controller : MonoBehaviour {
         //Debug.Log(playerID * 0.5f);
         transform.FindChild("Camera").GetComponent<Camera>().rect = new Rect(playerID * 0.5f, 0, 0.5f, 1);
         speedUI = transform.GetComponentInChildren<Text>();
+        ch = transform.FindChild("Targeting").gameObject;
 
+    }
+
+    void Update()
+    {
+
+        //Debug.DrawRay(transform.position, transform.right * 100, Color.red);
+
+        if (Physics.Raycast(transform.position, transform.right*100, 10000))
+        {
+            ch.GetComponent<MeshRenderer>().material.SetColor("Tint Color", Color.red);
+        }
     }
 	
 	// Update is called once per frame
